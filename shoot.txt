@@ -1,0 +1,2174 @@
+movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 800x500 px
+
+
+  frame 0
+    constants '_accProps', 'Object', 'silent'  
+    push '_accProps', 0.0, 'Object'
+    new
+    setVariable
+    push '_accProps'
+    getVariable
+    push 'silent', TRUE
+    setMember
+  end // of frame 0
+
+  frame 1
+    constants 'totalBytes', 'getBytesTotal', 'Math', 'round', 'loadedBytes', 'getBytesLoaded', 'percentDone', '_root', '_framesloaded', '_totalframes', 'Stage', 'showMenu'  
+    push 'totalBytes', 0.0, 'getBytesTotal'
+    callFunction
+    push 1024
+    divide
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
+    setVariable
+    push 'loadedBytes', 0.0, 'getBytesLoaded'
+    callFunction
+    push 1024
+    divide
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
+    setVariable
+    push 'percentDone', 'loadedBytes'
+    getVariable
+    push 'totalBytes'
+    getVariable
+    divide
+    push 100
+    multiply
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
+    setVariable
+    push '_root'
+    getVariable
+    push '_framesloaded'
+    getMember
+    push '_root'
+    getVariable
+    push '_totalframes'
+    getMember
+    push 2
+    subtract
+    lessThan
+    not
+    not
+    branchIfTrue label1
+    gotoLabel 'end'
+    play
+   label1:
+    push 'Stage'
+    getVariable
+    push 'showMenu', FALSE
+    setMember
+  end // of frame 1
+
+  frame 1
+    push 'Stage'
+    getVariable
+    push 'showMenu', FALSE
+    setMember
+  end // of frame 1
+  
+  // unknown tag 88 length 64
+
+  frame 2
+    gotoFrame 1
+    play
+  end // of frame 2
+
+  frame 4
+    constants 'play', 'jst_dialog_mc', '_visible', 'jst_message_txt', 'text', '_root', 'errorMsg', 'showAccessDenied', 'jst_userid', 'Invalid Params', 'result_lv', 'LoadVars', 'onLoad', 'toString', 'loginStatus=1', 'indexOf', 'startGame', 'Invalid login', 'Connection Failed', 'send_lv', 'userid', 'POST', 'http://www.points2shop.com/members/loggedin/index/loadsetting/gamelogincheck/', 'sendAndLoad'  
+    function2 startGame () (r:1='_root')
+      push 0.0, r:_root, 'play'
+      callMethod
+      pop
+    end // of function startGame
+
+    function2 showAccessDenied (r:2='msg') (r:1='_root')
+      push r:_root, 'jst_dialog_mc'
+      getMember
+      push '_visible', TRUE
+      setMember
+      push r:_root, 'jst_dialog_mc'
+      getMember
+      push 'jst_message_txt'
+      getMember
+      push 'text', r:msg
+      setMember
+    end // of function showAccessDenied
+
+    push '_root'
+    getVariable
+    push 'jst_dialog_mc'
+    getMember
+    push '_visible', FALSE
+    setMember
+    stop
+    push '_root'
+    getVariable
+    push 'errorMsg'
+    getMember
+    not
+    branchIfTrue label1
+    push '_root'
+    getVariable
+    push 'errorMsg'
+    getMember
+    push 1, 'showAccessDenied'
+    callFunction
+    pop
+    branch label7
+   label1:
+    push '_root'
+    getVariable
+    push 'jst_userid'
+    getMember
+    push UNDEF
+    equals
+    not
+    branchIfTrue label2
+    push 'Invalid Params', 1, 'showAccessDenied'
+    callFunction
+    pop
+    branch label7
+   label2:
+    push 'result_lv', 0.0, 'LoadVars'
+    new
+    varEquals
+    push 'result_lv'
+    getVariable
+    push 'onLoad'
+    function2 (r:2='success') ()
+      push r:success
+      not
+      branchIfTrue label5
+      push 0.0, 'result_lv'
+      getVariable
+      push 'toString'
+      callMethod
+      setRegister r:1
+      pop
+      push 'loginStatus=1', 1, r:1, 'indexOf'
+      callMethod
+      push -1
+      equals
+      not
+      not
+      branchIfTrue label3
+      push 0.0, 'startGame'
+      callFunction
+      pop
+      branch label4
+     label3:
+      push 'Invalid login', 1, 'showAccessDenied'
+      callFunction
+      pop
+     label4:
+      branch label6
+     label5:
+      push 'Connection Failed', 1, 'showAccessDenied'
+      callFunction
+      pop
+     label6:
+    end // of function 
+
+    setMember
+    push 'send_lv', 0.0, 'LoadVars'
+    new
+    varEquals
+    push 'send_lv'
+    getVariable
+    push 'userid', '_root'
+    getVariable
+    push 'jst_userid'
+    getMember
+    setMember
+    push 'POST', 'result_lv'
+    getVariable
+    push 'http://www.points2shop.com/members/loggedin/index/loadsetting/gamelogincheck/', 3, 'send_lv'
+    getVariable
+    push 'sendAndLoad'
+    callMethod
+    pop
+   label7:
+  end // of frame 4
+  
+  // unknown tag 88 length 66
+
+  defineMovieClip 14 // total frames: 1
+  end // of defineMovieClip 14
+
+  frame 5
+    constants 'Array', ';', 'split', 'length', ',', 'i', 'toArray', 'push', 'Date', 'getTime', 'deltat', 'errorInfo', 'tcount', 't', 'timeup', 'errorMsg', 'Unfair Advantage\n\nYour computer is too slow to play this game', 'endTimer', 'clearTimeout', 'errorCode', 'score', 'accuracy', 'play', 'setTimeout', 'errorScreen', 'gotoAndPlay', 'checkFPS', '_root', 'Stage', 'showMenu', 'counter', 'targetCount', 'targetSchedule', 'targets', 'good', 'slot', 'Math', 'random', 'max', 'round', 'j', 'sortByNumber', 'sort', 'floor', 'shift', 'unshift', 'pop', 'seed', '', 'toString', 'substr', 'MovieClip', 'prototype', 'tabEnabled', 'result_lv', 'LoadVars', 'onLoad', 'code', 'code=', 'indexOf', '.', 'send_lv', 'GET', 'http://www.points2shop.com/earn/games/code/jst_resultid/', 'jst_resultid', '/seed/', 'sendAndLoad'  
+    function2 sortByNumber (r:2='a', r:1='b') ()
+      push r:a, r:b
+      greaterThan
+      return
+    end // of function sortByNumber
+
+    function2 toArray (r:3='str') ()
+      push 0.0, 'Array'
+      new
+      setRegister r:2
+      pop
+      push ';', 1, r:str, 'split'
+      callMethod
+      setRegister r:1
+      pop
+      push r:1, 'length'
+      getMember
+      push 1
+      equals
+      not
+      branchIfTrue label1
+      push ',', 1, r:str, 'split'
+      callMethod
+      return
+     label1:
+      push r:1
+      enumerateValue
+     label2:
+      setRegister r:0
+      push NULL
+      equals
+      branchIfTrue label3
+      push 'i', r:0
+      setVariable
+      push r:1, 'i'
+      getVariable
+      getMember
+      push 1, 'toArray'
+      callFunction
+      push 1, r:2, 'push'
+      callMethod
+      pop
+      branch label2
+     label3:
+      push r:2
+      return
+    end // of function toArray
+
+    function2 checkFPS () (r:1='_root')
+      push 0.0, 0.0, 'Date'
+      new
+      push 'getTime'
+      callMethod
+      setRegister r:2
+      pop
+      push r:2, r:_root, 'deltat'
+      getMember
+      subtract
+      push 1000
+      subtract
+      push r:_root, 'errorInfo'
+      getMember
+      greaterThan
+      not
+      branchIfTrue label4
+      push r:_root, 'errorInfo', r:2, r:_root, 'deltat'
+      getMember
+      subtract
+      push 1000
+      subtract
+      setMember
+     label4:
+      push r:_root, 'tcount', r:_root, 'tcount'
+      getMember
+      increment
+      setMember
+      push r:_root, 't', r:_root, 't'
+      getMember
+      push r:_root, 'tcount'
+      getMember
+      push 1
+      subtract
+      multiply
+      push r:_root, 'tcount'
+      getMember
+      divide
+      push r:2, r:_root, 'deltat'
+      getMember
+      subtract
+      push r:_root, 'tcount'
+      getMember
+      divide
+      add
+      setMember
+      push r:_root, 't'
+      getMember
+      push 1100
+      greaterThan
+      dup
+      not
+      branchIfTrue label5
+      pop
+      push r:_root, 'timeup'
+      getMember
+      not
+     label5:
+      not
+      branchIfTrue label6
+      push r:_root, 'errorMsg', 'Unfair Advantage\n\nYour computer is too slow to play this game'
+      setMember
+      push r:_root, 'endTimer'
+      getMember
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      push r:_root, 'timeup', 1
+      setMember
+      push r:_root, 'errorCode', -301
+      setMember
+      push r:_root, 'score', 0.0
+      setMember
+      push r:_root, 'accuracy', 0.0
+      setMember
+      push r:_root, 'endTimer', 5000
+      function2 () (r:1='_root')
+        push 0.0, r:_root, 'play'
+        callMethod
+        pop
+      end // of function 
+
+      push 2, 'setTimeout'
+      callFunction
+      setMember
+      push 'errorScreen', 1, r:_root, 'gotoAndPlay'
+      callMethod
+      pop
+     label6:
+      push r:_root, 'deltat', r:2
+      setMember
+      push 1000, 'checkFPS'
+      getVariable
+      push 2, 'setTimeout'
+      callFunction
+      pop
+    end // of function checkFPS
+
+    stop
+    push '_root'
+    getVariable
+    push 'timeup'
+    getMember
+    not
+    branchIfTrue label7
+    gotoLabel 'timeup'
+   label7:
+    push 'Stage'
+    getVariable
+    push 'showMenu', FALSE
+    setMember
+    push '_root'
+    getVariable
+    push 'accuracy', 0.0
+    setMember
+    push '_root'
+    getVariable
+    push 'timeup', FALSE
+    setMember
+    push '_root'
+    getVariable
+    push 'counter', 0.0
+    setMember
+    push '_root'
+    getVariable
+    push 'targetCount', 0.0
+    setMember
+    push '_root'
+    getVariable
+    push 'targetSchedule', 0.0, 'Array'
+    new
+    push 0.0, 'Array'
+    new
+    push 0.0, 'Array'
+    new
+    push 0.0, 'Array'
+    new
+    push 4, 'Array'
+    new
+    setMember
+    push 'targets', 0.0
+    varEquals
+   label8:
+    push 'targets'
+    getVariable
+    push 50
+    lessThan
+    not
+    branchIfTrue label14
+    push 'good', TRUE
+    varEquals
+    push 'slot', 0.0, 'Math'
+    getVariable
+    push 'random'
+    callMethod
+    push 0.0, 'Math'
+    getVariable
+    push 'random'
+    callMethod
+    push 2, 'Math'
+    getVariable
+    push 'max'
+    callMethod
+    push 100
+    multiply
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
+    push 100
+    divide
+    varEquals
+    push 'i', 'targets'
+    getVariable
+    push 4
+    modulo
+    varEquals
+    push 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    enumerateValue
+   label9:
+    setRegister r:0
+    push NULL
+    equals
+    branchIfTrue label12
+    push 'j', r:0
+    setVariable
+    push 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'j'
+    getVariable
+    getMember
+    push 'slot'
+    getVariable
+    push 0.05
+    add
+    lessThan
+    dup
+    not
+    branchIfTrue label10
+    pop
+    push 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'j'
+    getVariable
+    getMember
+    push 'slot'
+    getVariable
+    push 0.05
+    subtract
+    greaterThan
+   label10:
+    not
+    branchIfTrue label11
+    push 'good', FALSE
+    setVariable
+   label11:
+    branch label9
+   label12:
+    push 'good'
+    getVariable
+    not
+    branchIfTrue label13
+    push 'slot'
+    getVariable
+    push 1, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'push'
+    callMethod
+    pop
+    push 'targets', 'targets'
+    getVariable
+    increment
+    setVariable
+   label13:
+    branch label8
+   label14:
+    push 'targetSchedule'
+    getVariable
+    enumerateValue
+   label15:
+    setRegister r:0
+    push NULL
+    equals
+    branchIfTrue label16
+    push 'i', r:0
+    setVariable
+    push 'sortByNumber'
+    getVariable
+    push 1, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'sort'
+    callMethod
+    pop
+    branch label15
+   label16:
+    push 'i', 0.0, 'Math'
+    getVariable
+    push 'random'
+    callMethod
+    push 3.99
+    multiply
+    push 1, 'Math'
+    getVariable
+    push 'floor'
+    callMethod
+    varEquals
+    push 0.0, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'shift'
+    callMethod
+    pop
+    push 0.0, 1, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'unshift'
+    callMethod
+    pop
+    push 'i', 0.0, 'Math'
+    getVariable
+    push 'random'
+    callMethod
+    push 3.99
+    multiply
+    push 1, 'Math'
+    getVariable
+    push 'floor'
+    callMethod
+    setVariable
+    push 0.0, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'pop'
+    callMethod
+    pop
+    push 1, 1, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'push'
+    callMethod
+    pop
+    push '_root'
+    getVariable
+    push 'seed', ''
+    setMember
+    push 'targetSchedule'
+    getVariable
+    enumerateValue
+   label17:
+    setRegister r:0
+    push NULL
+    equals
+    branchIfTrue label18
+    push 'i', r:0
+    setVariable
+    push '_root'
+    getVariable
+    push 'seed', '_root'
+    getVariable
+    push 'seed'
+    getMember
+    push ';', 0.0, 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'toString'
+    callMethod
+    add
+    add
+    setMember
+    branch label17
+   label18:
+    push '_root'
+    getVariable
+    push 'seed', 1, 1, '_root'
+    getVariable
+    push 'seed'
+    getMember
+    push 'substr'
+    callMethod
+    setMember
+    push 'MovieClip'
+    getVariable
+    push 'prototype'
+    getMember
+    push 'tabEnabled', FALSE
+    setMember
+    push 'result_lv', 0.0, 'LoadVars'
+    new
+    varEquals
+    push 'result_lv'
+    getVariable
+    push 'onLoad'
+    function2 ('success') (r:1='_root')
+      push 0.0, 'result_lv'
+      getVariable
+      push 'toString'
+      callMethod
+      setRegister r:2
+      pop
+      push r:_root, 'code', 32, 'code=', 1, r:2, 'indexOf'
+      callMethod
+      push 5
+      add
+      push 2, r:2, 'substr'
+      callMethod
+      setMember
+      push 'result_lv'
+      getVariable
+      push 'seed'
+      getMember
+      push 'length'
+      getMember
+      push 25
+      greaterThan
+      dup
+      not
+      branchIfTrue label19
+      pop
+      push '.', 1, 'result_lv'
+      getVariable
+      push 'seed'
+      getMember
+      push 'indexOf'
+      callMethod
+      push 0.0
+      lessThan
+      not
+     label19:
+      not
+      branchIfTrue label20
+      push 'targetSchedule', 'result_lv'
+      getVariable
+      push 'seed'
+      getMember
+      push 1, 'toArray'
+      callFunction
+      setVariable
+     label20:
+    end // of function 
+
+    setMember
+    push 'send_lv', 0.0, 'LoadVars'
+    new
+    varEquals
+    push 'GET', 'result_lv'
+    getVariable
+    push 'http://www.points2shop.com/earn/games/code/jst_resultid/', '_root'
+    getVariable
+    push 'jst_resultid'
+    getMember
+    add
+    push '/seed/'
+    add
+    push '_root'
+    getVariable
+    push 'seed'
+    getMember
+    add
+    push 3, 'send_lv'
+    getVariable
+    push 'sendAndLoad'
+    callMethod
+    pop
+    push '_root'
+    getVariable
+    push 'deltat', 0.0, 0.0, 'Date'
+    new
+    push 'getTime'
+    callMethod
+    setMember
+    push '_root'
+    getVariable
+    push 't', 0.0
+    setMember
+    push '_root'
+    getVariable
+    push 'tcount', 0.0
+    setMember
+    push '_root'
+    getVariable
+    push 'errorInfo'
+    getMember
+    not
+    not
+    branchIfTrue label21
+    push '_root'
+    getVariable
+    push 'errorInfo', 0.0
+    setMember
+   label21:
+    push 1000, 'checkFPS'
+    getVariable
+    push 2, 'setTimeout'
+    callFunction
+    pop
+  end // of frame 5
+  
+  // unknown tag 88 length 64
+
+  defineButton 22
+
+    on overDownToOverUp
+      push '', 19, 'low'
+      setProperty
+      push 0.0, '_root'
+      getVariable
+      push 'nextFrame'
+      callMethod
+      pop
+    end
+  end // of defineButton 22
+
+  defineButton 26
+
+    on overDownToOverUp
+      push '', 19, 'high'
+      setProperty
+      push 0.0, '_root'
+      getVariable
+      push 'nextFrame'
+      callMethod
+      pop
+    end
+  end // of defineButton 26
+
+  defineMovieClip 28 // total frames: 1
+  end // of defineMovieClip 28
+
+  placeMovieClip 28 as 'sight'
+
+    onClipEvent load
+      push 0.0, 'Mouse'
+      getVariable
+      push 'hide'
+      callMethod
+      pop
+    end
+
+    onClipEvent enterFrame
+      constants '', '_root', '_xmouse', '_ymouse'  
+      push '', 0.0, '_root'
+      getVariable
+      push '_xmouse'
+      getMember
+      setProperty
+      push '', 1, '_root'
+      getVariable
+      push '_ymouse'
+      getMember
+      setProperty
+      push '', 1
+      getProperty
+      push 350
+      lessThan
+      not
+      not
+      branchIfTrue label1
+      push '', 1, 350
+      setProperty
+     label1:
+    end
+  end // of placeMovieClip 28
+
+  frame 6
+    constants 'target0', '_accProps', 'Object', 'silent'  
+    push 'target0'
+    getVariable
+    push '_accProps', 0.0, 'Object'
+    new
+    setMember
+    push 'target0'
+    getVariable
+    push '_accProps'
+    getMember
+    push 'silent', TRUE
+    setMember
+  end // of frame 6
+
+  frame 6
+    constants 'target1', '_accProps', 'Object', 'silent'  
+    push 'target1'
+    getVariable
+    push '_accProps', 0.0, 'Object'
+    new
+    setMember
+    push 'target1'
+    getVariable
+    push '_accProps'
+    getMember
+    push 'silent', TRUE
+    setMember
+  end // of frame 6
+
+  frame 6
+    constants 'target2', '_accProps', 'Object', 'silent'  
+    push 'target2'
+    getVariable
+    push '_accProps', 0.0, 'Object'
+    new
+    setMember
+    push 'target2'
+    getVariable
+    push '_accProps'
+    getMember
+    push 'silent', TRUE
+    setMember
+  end // of frame 6
+
+  frame 6
+    constants 'target3', '_accProps', 'Object', 'silent'  
+    push 'target3'
+    getVariable
+    push '_accProps', 0.0, 'Object'
+    new
+    setMember
+    push 'target3'
+    getVariable
+    push '_accProps'
+    getMember
+    push 'silent', TRUE
+    setMember
+  end // of frame 6
+
+  frame 6
+    constants 'bullets', '_accProps', 'Object', 'silent'  
+    push 'bullets'
+    getVariable
+    push '_accProps', 0.0, 'Object'
+    new
+    setMember
+    push 'bullets'
+    getVariable
+    push '_accProps'
+    getMember
+    push 'silent', TRUE
+    setMember
+  end // of frame 6
+
+  frame 6
+    constants 'velocity', 'x', 'y', 'high', 'avg', 'count', 'Mouse', 'addListener', 'onMouseMove', 'px', '_level0', '_xmouse', 'py', '_ymouse', 'errorMsg', 'Unfair Advantage\n\nThis game must be played with a mouse.', 'endTimer', 'clearTimeout', 'timeup', 'errorCode', 'errorInfo', 'Math', 'round', 'score', 'accuracy', 'play', 'setTimeout', 'errorScreen', 'gotoAndPlay', 'targetSchedule', 'i', 'j', '_root', 'targetCount', '_root.target', 'a', '_x', 'random', 'target1ready', 'myTargetID', 'timer', 'timerbar', 'gotoAndStop'  
+    push 'velocity', 'x', 0.0, 'y', 0.0, 'high', 0.0, 'avg', 0.0, 'count', 1, 5
+    initObject
+    setVariable
+    push 'velocity'
+    getVariable
+    push 1, 'Mouse'
+    getVariable
+    push 'addListener'
+    callMethod
+    pop
+    push 'velocity'
+    getVariable
+    push 'onMouseMove'
+    function2 () (r:1='this', r:2='_root')
+      push r:this, 'x', 0.0, r:this, 'px'
+      getMember
+      subtract
+      push r:this, 'px', '_level0'
+      getVariable
+      push '_xmouse'
+      getMember
+      setRegister r:0
+      setMember
+      push r:0
+      add
+      setMember
+      push r:this, 'y', 0.0, r:this, 'py'
+      getMember
+      subtract
+      push r:this, 'py', '_level0'
+      getVariable
+      push '_ymouse'
+      getMember
+      setRegister r:0
+      setMember
+      push r:0
+      add
+      setMember
+      push 'velocity'
+      getVariable
+      push 'x'
+      getMember
+      push 250
+      greaterThan
+      not
+      branchIfTrue label1
+      push 'velocity'
+      getVariable
+      push 'avg', 'velocity'
+      getVariable
+      push 'avg'
+      getMember
+      push 'velocity'
+      getVariable
+      push 'count'
+      getMember
+      push 1
+      subtract
+      multiply
+      push 'velocity'
+      getVariable
+      push 'count'
+      getMember
+      divide
+      push 'velocity'
+      getVariable
+      push 'x'
+      getMember
+      push 250
+      subtract
+      push 'velocity'
+      getVariable
+      push 'count'
+      getMember
+      divide
+      add
+      setMember
+      push 'velocity'
+      getVariable
+      push 'count', 'velocity'
+      getVariable
+      push 'count'
+      getMember
+      increment
+      setMember
+      push 'velocity'
+      getVariable
+      push 'high', 'velocity'
+      getVariable
+      push 'high'
+      getMember
+      push 'velocity'
+      getVariable
+      push 'x'
+      getMember
+      push 250
+      subtract
+      push 350
+      divide
+      add
+      setMember
+     label1:
+      push 'velocity'
+      getVariable
+      push 'high'
+      getMember
+      push 8
+      greaterThan
+      not
+      branchIfTrue label2
+      push r:_root, 'errorMsg', 'Unfair Advantage\n\nThis game must be played with a mouse.'
+      setMember
+      push r:_root, 'endTimer'
+      getMember
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      push r:_root, 'timeup', 1
+      setMember
+      push r:_root, 'errorCode', -302
+      setMember
+      push r:_root, 'errorInfo', 'velocity'
+      getVariable
+      push 'avg'
+      getMember
+      push 1, 'Math'
+      getVariable
+      push 'round'
+      callMethod
+      setMember
+      push r:_root, 'score', 0.0
+      setMember
+      push r:_root, 'accuracy', 0.0
+      setMember
+      push r:_root, 'endTimer', 5000
+      function2 () (r:1='_root')
+        push 0.0, r:_root, 'play'
+        callMethod
+        pop
+      end // of function 
+
+      push 2, 'setTimeout'
+      callFunction
+      setMember
+      push 'errorScreen', 1, r:_root, 'gotoAndPlay'
+      callMethod
+      pop
+      push 'velocity'
+      getVariable
+      push 'onMouseMove'
+      function ()
+      end // of function 
+
+      setMember
+     label2:
+    end // of function 
+
+    setMember
+    stop
+    push 'targetSchedule'
+    getVariable
+    enumerateValue
+   label3:
+    setRegister r:0
+    push NULL
+    equals
+    branchIfTrue label6
+    push 'i', r:0
+    setVariable
+    push 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    enumerateValue
+   label4:
+    setRegister r:0
+    push NULL
+    equals
+    branchIfTrue label5
+    push 'j', r:0
+    setVariable
+    push 'i'
+    getVariable
+    push 'targetSchedule'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'j'
+    getVariable
+    getMember
+    push 35000
+    multiply
+    function ('a')
+      push '_root'
+      getVariable
+      push 'targetCount', '_root'
+      getVariable
+      push 'targetCount'
+      getMember
+      increment
+      setMember
+      push '_root.target', 'a'
+      getVariable
+      add
+      getVariable
+      push '_x', 'a'
+      getVariable
+      push 730
+      multiply
+      push 4
+      divide
+      push 0.0, 'Math'
+      getVariable
+      push 'random'
+      callMethod
+      push 730
+      multiply
+      push 8
+      divide
+      add
+      push 1, 'Math'
+      getVariable
+      push 'round'
+      callMethod
+      setMember
+      push 'target1ready', 1, '_root.target', 'a'
+      getVariable
+      add
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+      push '_root.target', 'a'
+      getVariable
+      add
+      getVariable
+      push 'myTargetID', '_root'
+      getVariable
+      push 'targetCount'
+      getMember
+      setMember
+      push '_root'
+      getVariable
+      push 'targetCount'
+      getMember
+      push 1
+      add
+      push 1, '_root'
+      getVariable
+      push 'timer'
+      getMember
+      push 'timerbar'
+      getMember
+      push 'gotoAndStop'
+      callMethod
+      pop
+    end // of function 
+
+    push 3, 'setTimeout'
+    callFunction
+    pop
+    branch label4
+   label5:
+    branch label3
+   label6:
+    push '_root'
+    getVariable
+    push 'endTimer', 37000
+    function2 () (r:1='_root')
+      push 'timeup', 1, r:_root, 'gotoAndStop'
+      callMethod
+      pop
+    end // of function 
+
+    push 2, 'setTimeout'
+    callFunction
+    setMember
+  end // of frame 6
+
+  frame 6
+    push 'score', 0.0
+    setVariable
+    push 'ammo', 5
+    setVariable
+  end // of frame 6
+
+  defineMovieClip 41 // total frames: 10
+
+    frame 0
+    end // of frame 0
+  end // of defineMovieClip 41
+
+  defineMovieClip 44 // total frames: 1
+  end // of defineMovieClip 44
+
+  defineMovieClip 48 // total frames: 83
+
+    frame 0
+      constants 'r', 'Math', 'random'  
+      push 'r', 0.0, 'Math'
+      getVariable
+      push 'random'
+      callMethod
+      setVariable
+      push 'r'
+      getVariable
+      push 0.2
+      lessThan
+      not
+      branchIfTrue label1
+      gotoFrame 1
+      play
+      branch label5
+     label1:
+      push 'r'
+      getVariable
+      push 0.4
+      lessThan
+      not
+      branchIfTrue label2
+      gotoFrame 22
+      play
+      branch label5
+     label2:
+      push 'r'
+      getVariable
+      push 0.6
+      lessThan
+      not
+      branchIfTrue label3
+      gotoFrame 37
+      play
+      branch label5
+     label3:
+      push 'r'
+      getVariable
+      push 0.8
+      lessThan
+      not
+      branchIfTrue label4
+      gotoFrame 52
+      play
+      branch label5
+     label4:
+      gotoFrame 67
+      play
+     label5:
+    end // of frame 0
+
+    frame 21
+      stop
+    end // of frame 21
+
+    frame 36
+      stop
+    end // of frame 36
+
+    frame 51
+      stop
+    end // of frame 51
+
+    frame 66
+      stop
+    end // of frame 66
+
+    frame 82
+      stop
+    end // of frame 82
+  end // of defineMovieClip 48
+
+  defineMovieClip 50 // total frames: 57
+
+    frame 0
+      stop
+      push 'target1up', FALSE
+      setVariable
+    end // of frame 0
+
+    frame 1
+      constants 'timeup', 'targetTimer', 'clearTimeout', 'targetUp', 'setTimeout', 'target1up'  
+      function2 targetUp () (r:1='_root')
+        push r:_root, 'timeup'
+        getMember
+        not
+        not
+        branchIfTrue label1
+        gotoLabel 'targetUp'
+       label1:
+      end // of function targetUp
+
+      push 'targetTimer'
+      getVariable
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      push 'targetTimer', 100, 'targetUp'
+      getVariable
+      push 2, 'setTimeout'
+      callFunction
+      setVariable
+      push 'target1up', TRUE
+      setVariable
+    end // of frame 1
+
+    frame 5
+      constants 'timeup', 'target1up', 'targetTimer', 'clearTimeout', 'targetDown', 'setTimeout'  
+      function2 targetDown () (r:1='_root')
+        push r:_root, 'timeup'
+        getMember
+        not
+        not
+        branchIfTrue label1
+        push 'target1up', FALSE
+        setVariable
+        gotoLabel 'targetDown'
+        play
+       label1:
+      end // of function targetDown
+
+      stop
+      push 'targetTimer'
+      getVariable
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      push 'targetTimer', 750, 'targetDown'
+      getVariable
+      push 2, 'setTimeout'
+      callFunction
+      setVariable
+    end // of frame 5
+
+    frame 24
+      constants 'timeup', 'targetTimer', 'clearTimeout', 'targetDone', 'setTimeout'  
+      function2 targetDone () (r:1='_root')
+        push r:_root, 'timeup'
+        getMember
+        not
+        not
+        branchIfTrue label1
+        gotoLabel 'targetDone'
+        play
+       label1:
+      end // of function targetDone
+
+      push 'targetTimer'
+      getVariable
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      push 'targetTimer', 100, 'targetDone'
+      getVariable
+      push 2, 'setTimeout'
+      callFunction
+      setVariable
+    end // of frame 24
+
+    frame 26
+      push 'target1up', FALSE
+      setVariable
+      push 'targetTimer'
+      getVariable
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      gotoLabel 'target1ready'
+    end // of frame 26
+
+    frame 27
+      constants 'Text55', '_accProps', 'Object', 'silent'  
+      push 'Text55'
+      getVariable
+      push '_accProps', 0.0, 'Object'
+      new
+      setMember
+      push 'Text55'
+      getVariable
+      push '_accProps'
+      getMember
+      push 'silent', TRUE
+      setMember
+    end // of frame 27
+
+    frame 27
+      constants 'targetTimer', 'clearTimeout', 'target1up', 'xhit', '', 'yhit', 'radius', 'Math', 'pow', 'sqrt', 'pts', 'floor', 'this', '_root', 'accuracy', 'spark', '_x', '_width', '_y', '_height', 'score'  
+      push 'targetTimer'
+      getVariable
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      push 'target1up'
+      getVariable
+      not
+      branchIfTrue label4
+      push 'xhit', '', 20
+      getProperty
+      push 10
+      subtract
+      setVariable
+      push 'yhit', '', 21
+      getProperty
+      push 20
+      add
+      setVariable
+      push 'radius', 2, 55, 'xhit'
+      getVariable
+      subtract
+      push 2, 'Math'
+      getVariable
+      push 'pow'
+      callMethod
+      push 2, 55, 'yhit'
+      getVariable
+      subtract
+      push 2, 'Math'
+      getVariable
+      push 'pow'
+      callMethod
+      add
+      push 1, 'Math'
+      getVariable
+      push 'sqrt'
+      callMethod
+      push 55
+      divide
+      setVariable
+      push 'pts', 4, 'radius'
+      getVariable
+      push 4
+      multiply
+      push 1, 'Math'
+      getVariable
+      push 'floor'
+      callMethod
+      subtract
+      setVariable
+      push 'this'
+      getVariable
+      push 'target1up'
+      getMember
+      trace
+      push 'pts'
+      getVariable
+      push -1
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'pts'
+      getVariable
+      push 1
+      greaterThan
+      not
+     label1:
+      not
+      branchIfTrue label2
+      push 'pts', 1
+      setVariable
+      branch label3
+     label2:
+      push 'pts'
+      getVariable
+      push -1
+      lessThan
+      not
+      branchIfTrue label3
+      push 'target1up', FALSE
+      setVariable
+      gotoLabel 'target1ready'
+     label3:
+      push '_root'
+      getVariable
+      push 'accuracy', '_root'
+      getVariable
+      push 'accuracy'
+      getMember
+      push 5, 'radius'
+      getVariable
+      push 4
+      multiply
+      subtract
+      add
+      setMember
+      push 'spark'
+      getVariable
+      push '_x', '', 20
+      getProperty
+      push 'spark'
+      getVariable
+      push '_width'
+      getMember
+      push 2
+      divide
+      subtract
+      setMember
+      push 'spark'
+      getVariable
+      push '_y', '', 21
+      getProperty
+      push 'spark'
+      getVariable
+      push '_height'
+      getMember
+      push 2
+      divide
+      subtract
+      setMember
+      push '_root'
+      getVariable
+      push 'score', '_root'
+      getVariable
+      push 'score'
+      getMember
+      push 'pts'
+      getVariable
+      add
+      setMember
+     label4:
+      push 'target1up', FALSE
+      setVariable
+    end // of frame 27
+
+    frame 56
+      push 'targetTimer'
+      getVariable
+      push 1, 'clearTimeout'
+      callFunction
+      pop
+      gotoLabel 'target1ready'
+    end // of frame 56
+  end // of defineMovieClip 50
+
+  placeMovieClip 50 as 'target0'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 50
+
+  placeMovieClip 50 as 'target1'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 50
+
+  placeMovieClip 50 as 'target2'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 50
+
+  placeMovieClip 50 as 'target3'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 50
+
+  defineMovieClip 52 // total frames: 1
+  end // of defineMovieClip 52
+
+  defineMovieClip 54 // total frames: 1
+  end // of defineMovieClip 54
+
+  defineMovieClip 55 // total frames: 1
+  end // of defineMovieClip 55
+
+  defineButton 58
+
+    on overDownToOverUp
+      constants '_root', 'ammo', 'loaded', 'gun', 'gotoAndPlay', '1', 'bullets'  
+      push '_root'
+      getVariable
+      push 'ammo', 5
+      setMember
+      push 'loaded', 1, '_root'
+      getVariable
+      push 'gun'
+      getMember
+      push 'gotoAndPlay'
+      callMethod
+      pop
+      push '1', 1, '_root'
+      getVariable
+      push 'bullets'
+      getMember
+      push 'gotoAndPlay'
+      callMethod
+      pop
+    end
+  end // of defineButton 58
+
+  defineMovieClip 63 // total frames: 25
+  end // of defineMovieClip 63
+
+  defineMovieClip 64 // total frames: 6
+
+    frame 0
+      constants 'loaded', '_root', 'gun', 'gotoAndStop', 'ammo'  
+      stop
+      push 'loaded', 1, '_root'
+      getVariable
+      push 'gun'
+      getMember
+      push 'gotoAndStop'
+      callMethod
+      pop
+      push '_root'
+      getVariable
+      push 'ammo', 5
+      setMember
+    end // of frame 0
+
+    frame 1
+      stop
+    end // of frame 1
+
+    frame 2
+      stop
+    end // of frame 2
+
+    frame 3
+      stop
+    end // of frame 3
+
+    frame 4
+      stop
+    end // of frame 4
+
+    frame 5
+      stop
+    end // of frame 5
+  end // of defineMovieClip 64
+
+  defineMovieClip 67 // total frames: 2
+
+    frame 0
+      stop
+    end // of frame 0
+  end // of defineMovieClip 67
+
+  defineMovieClip 69 // total frames: 4
+
+    frame 0
+      stop
+    end // of frame 0
+  end // of defineMovieClip 69
+
+  defineMovieClip 70 // total frames: 2
+
+    frame 0
+      stop
+    end // of frame 0
+
+    placeMovieClip 69 
+
+      onClipEvent mouseDown
+        constants '_root', 'ammo', 'bullets', 'gotoAndStop', 'accuracy', 'unloaded', 'gun'  
+        push '_root'
+        getVariable
+        push 'ammo', '_root'
+        getVariable
+        push 'ammo'
+        getMember
+        decrement
+        setMember
+        push 6, '_root'
+        getVariable
+        push 'ammo'
+        getMember
+        subtract
+        push 1, '_root'
+        getVariable
+        push 'bullets'
+        getMember
+        push 'gotoAndStop'
+        callMethod
+        pop
+        push '_root'
+        getVariable
+        push 'accuracy', '_root'
+        getVariable
+        push 'accuracy'
+        getMember
+        decrement
+        setMember
+        push '_root'
+        getVariable
+        push 'ammo'
+        getMember
+        push 0.0
+        lessThan
+        not
+        branchIfTrue label1
+        push 'unloaded', 1, '_root'
+        getVariable
+        push 'gun'
+        getMember
+        push 'gotoAndStop'
+        callMethod
+        pop
+        branch label2
+       label1:
+        play
+       label2:
+      end
+    end // of placeMovieClip 69
+
+    frame 1
+      stop
+    end // of frame 1
+
+    placeMovieClip 67 
+
+      onClipEvent mouseDown
+        constants '_root', 'ammo'  
+        push '_root'
+        getVariable
+        push 'ammo', '_root'
+        getVariable
+        push 'ammo'
+        getMember
+        decrement
+        setMember
+        play
+      end
+    end // of placeMovieClip 67
+  end // of defineMovieClip 70
+
+  placeMovieClip 70 as 'gun'
+
+    onClipEvent enterFrame
+      push '', 0.0, '_root'
+      getVariable
+      push '_xmouse'
+      getMember
+      setProperty
+    end
+  end // of placeMovieClip 70
+  
+  // unknown tag 88 length 64
+
+  defineMovieClip 76 // total frames: 1
+  end // of defineMovieClip 76
+
+  defineMovieClip 77 // total frames: 51
+
+    frame 0
+      stop
+    end // of frame 0
+  end // of defineMovieClip 77
+
+  defineMovieClip 78 // total frames: 1
+  end // of defineMovieClip 78
+
+  frame 7
+    constants '_root', 'endTimer', 'clearTimeout', 'timeup', 'digits', '', 'jst_userid', 'x', 'score', 'split', 'encodingKey', 'i', 'length', 'charCodeAt', 'newCode', 'code', 'parseInt', 'isNaN', 'shift', 'sender', 'LoadVars', 'jst_sessionid', 'join', 'jst_tournamentid', 'jst_resultid', 'nocode', '.', 'accuracy', '0', '00', 'Math', 'round', 'errorCode', 'errorInfo', 'POST', '_self', 'http://www.points2shop.com/earn/games/results/', 'send', 'ACCURACY SCORE: '  
+    push '_root'
+    getVariable
+    push 'endTimer'
+    getMember
+    push 1, 'clearTimeout'
+    callFunction
+    pop
+    stop
+    push '_root'
+    getVariable
+    push 'timeup', TRUE
+    setMember
+    push 'digits', '', 1, '_root'
+    getVariable
+    push 'jst_userid'
+    getMember
+    push 'x'
+    add
+    push '_root'
+    getVariable
+    push 'score'
+    getMember
+    add
+    push 'split'
+    callMethod
+    varEquals
+    push 'encodingKey', ''
+    varEquals
+    push 'i', 0.0
+    varEquals
+   label1:
+    push 'i'
+    getVariable
+    push 'digits'
+    getVariable
+    push 'length'
+    getMember
+    lessThan
+    not
+    branchIfTrue label2
+    push 'encodingKey', 'encodingKey'
+    getVariable
+    push '', 0.0, 1, 'digits'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 'charCodeAt'
+    callMethod
+    add
+    add
+    setVariable
+    push 'i', 'i'
+    getVariable
+    increment
+    setVariable
+    branch label1
+   label2:
+    push 'encodingKey', '', 1, 'encodingKey'
+    getVariable
+    push 'split'
+    callMethod
+    setVariable
+    push 'newCode', '', 1, '_root'
+    getVariable
+    push 'code'
+    getMember
+    push 'split'
+    callMethod
+    varEquals
+    push 'i', 0.0
+    setVariable
+   label3:
+    push 'i'
+    getVariable
+    push 'newCode'
+    getVariable
+    push 'length'
+    getMember
+    lessThan
+    not
+    branchIfTrue label6
+    push 'encodingKey'
+    getVariable
+    push 'length'
+    getMember
+    push 0.0
+    equals
+    not
+    branchIfTrue label4
+    branch label6
+   label4:
+    push 'newCode'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    push 1, 'parseInt'
+    callFunction
+    push 1, 'isNaN'
+    callFunction
+    not
+    not
+    branchIfTrue label5
+    push 'newCode'
+    getVariable
+    push 'i'
+    getVariable
+    push 1, 'newCode'
+    getVariable
+    push 'i'
+    getVariable
+    getMember
+    multiply
+    push 10
+    add
+    push 1, 0.0, 'encodingKey'
+    getVariable
+    push 'shift'
+    callMethod
+    multiply
+    subtract
+    push 10
+    modulo
+    setMember
+   label5:
+    push 'i', 'i'
+    getVariable
+    increment
+    setVariable
+    branch label3
+   label6:
+    push 'sender', 0.0, 'LoadVars'
+    new
+    varEquals
+    push 'sender'
+    getVariable
+    push 'jst_userid', '_root'
+    getVariable
+    push 'jst_userid'
+    getMember
+    setMember
+    push 'sender'
+    getVariable
+    push 'jst_sessionid', '', 1, 'newCode'
+    getVariable
+    push 'join'
+    callMethod
+    setMember
+    push 'sender'
+    getVariable
+    push 'jst_tournamentid', '_root'
+    getVariable
+    push 'jst_tournamentid'
+    getMember
+    setMember
+    push 'sender'
+    getVariable
+    push 'jst_resultid', '_root'
+    getVariable
+    push 'jst_resultid'
+    getMember
+    setMember
+    push '_root'
+    getVariable
+    push 'code'
+    getMember
+    not
+    not
+    branchIfTrue label7
+    push 'sender'
+    getVariable
+    push 'nocode', 1
+    setMember
+   label7:
+    push 'sender'
+    getVariable
+    push 'score', '_root'
+    getVariable
+    push 'score'
+    getMember
+    push '.'
+    add
+    setMember
+    push '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 100
+    lessThan
+    not
+    branchIfTrue label8
+    push 'sender'
+    getVariable
+    push 'score', 'sender'
+    getVariable
+    push 'score'
+    getMember
+    push '0'
+    add
+    setMember
+   label8:
+    push '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 10
+    lessThan
+    not
+    branchIfTrue label9
+    push 'sender'
+    getVariable
+    push 'score', 'sender'
+    getVariable
+    push 'score'
+    getMember
+    push '0'
+    add
+    setMember
+   label9:
+    push '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 0.0
+    lessThan
+    not
+    branchIfTrue label10
+    push 'sender'
+    getVariable
+    push 'score', 'sender'
+    getVariable
+    push 'score'
+    getMember
+    push '00'
+    add
+    setMember
+    branch label12
+   label10:
+    push '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 0.0
+    lessThan
+    not
+    branchIfTrue label11
+    push '_root'
+    getVariable
+    push 'accuracy', 0.0
+    setMember
+   label11:
+    push 'sender'
+    getVariable
+    push 'score', 'sender'
+    getVariable
+    push 'score'
+    getMember
+    push '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 10000
+    multiply
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
+    add
+    setMember
+   label12:
+    push '_root'
+    getVariable
+    push 'errorCode'
+    getMember
+    not
+    branchIfTrue label15
+    push '_root'
+    getVariable
+    push 'errorInfo', '_root'
+    getVariable
+    push 'errorInfo'
+    getMember
+    push ''
+    add
+    setMember
+   label13:
+    push 4, '_root'
+    getVariable
+    push 'errorInfo'
+    getMember
+    push 'length'
+    getMember
+    subtract
+    push 0.0
+    greaterThan
+    not
+    branchIfTrue label14
+    push '_root'
+    getVariable
+    push 'errorInfo', '0', '_root'
+    getVariable
+    push 'errorInfo'
+    getMember
+    add
+    setMember
+    branch label13
+   label14:
+    push 'sender'
+    getVariable
+    push 'score', '_root'
+    getVariable
+    push 'errorCode'
+    getMember
+    push '.'
+    add
+    push '_root'
+    getVariable
+    push 'errorInfo'
+    getMember
+    add
+    setMember
+   label15:
+    push 'POST', '_self', 'http://www.points2shop.com/earn/games/results/', 3, 'sender'
+    getVariable
+    push 'send'
+    callMethod
+    pop
+    push '_root'
+    getVariable
+    push 'accuracy', 'ACCURACY SCORE: ', '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 100
+    multiply
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
+    push 100
+    divide
+    add
+    setMember
+  end // of frame 7
+end
