@@ -1,4 +1,4 @@
-movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 800x500 px
+movie 'shoot2.swf' compressed // flash 9, total frames: 8, frame rate: 24 fps, 800x500 px
 
 
   frame 0
@@ -82,7 +82,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
   end // of frame 2
 
   frame 4
-    constants 'play', 'jst_dialog_mc', '_visible', 'jst_message_txt', 'text', '_root', 'errorMsg', 'showAccessDenied', 'jst_userid', 'Invalid Params', 'result_lv', 'LoadVars', 'onLoad', 'toString', 'loginStatus=1', 'indexOf', 'startGame', 'Invalid login', 'Connection Failed', 'send_lv', 'userid', 'POST', 'http://www.points2shop.com/members/loggedin/index/loadsetting/gamelogincheck/', 'sendAndLoad'  
+    constants 'play', 'jst_dialog_mc', '_visible', 'jst_message_txt', 'text', '_root', 'errorMsg', 'showAccessDenied', 'jst_userid', 'Invalid Params', 'result_lv', 'LoadVars', 'onLoad', 'toString', 'loginStatus=1', 'indexOf', 'startGame', 'Invalid login', 'Connection Failed', 'send_lv', 'user_id', 'load_setting', 'gamelogincheck', 'POST', 'http://www.points2shop.com/members/logged_in', 'sendAndLoad'  
     function2 startGame () (r:1='_root')
       push 0.0, r:_root, 'play'
       callMethod
@@ -183,14 +183,18 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     varEquals
     push 'send_lv'
     getVariable
-    push 'userid', '_root'
+    push 'user_id', '_root'
     getVariable
     push 'jst_userid'
     getMember
     setMember
+    push 'send_lv'
+    getVariable
+    push 'load_setting', 'gamelogincheck'
+    setMember
     push 'POST', 'result_lv'
     getVariable
-    push 'http://www.points2shop.com/members/loggedin/index/loadsetting/gamelogincheck/', 3, 'send_lv'
+    push 'http://www.points2shop.com/members/logged_in', 3, 'send_lv'
     getVariable
     push 'sendAndLoad'
     callMethod
@@ -204,7 +208,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
   end // of defineMovieClip 14
 
   frame 5
-    constants 'Array', ';', 'split', 'length', ',', 'i', 'toArray', 'push', 'Date', 'getTime', 'deltat', 'errorInfo', 'tcount', 't', 'timeup', 'errorMsg', 'Unfair Advantage\n\nYour computer is too slow to play this game', 'endTimer', 'clearTimeout', 'errorCode', 'score', 'accuracy', 'play', 'setTimeout', 'errorScreen', 'gotoAndPlay', 'checkFPS', '_root', 'Stage', 'showMenu', 'counter', 'targetCount', 'targetSchedule', 'targets', 'good', 'slot', 'Math', 'random', 'max', 'round', 'j', 'sortByNumber', 'sort', 'floor', 'shift', 'unshift', 'pop', 'seed', '', 'toString', 'substr', 'MovieClip', 'prototype', 'tabEnabled', 'result_lv', 'LoadVars', 'onLoad', 'code', 'code=', 'indexOf', '.', 'send_lv', 'GET', 'http://www.points2shop.com/earn/games/code/jst_resultid/', 'jst_resultid', '/seed/', 'sendAndLoad'  
+    constants 'Array', ';', 'split', 'length', ',', 'i', 'toArray', 'push', 'Date', 'getTime', 'deltat', 'errorInfo', 'tcount', 't', 'tc', 'timeup', 'errorMsg', 'Unfair Advantage\n\nYour computer is too slow to play this game', 'endTimer', 'clearTimeout', 'errorCode', 'score', 'accuracy', 'play', 'setTimeout', 'errorScreen', 'gotoAndPlay', 'checkFPS', '', 'low', '_root', 'Stage', 'showMenu', 'counter', 'targetCount', 'targetSchedule', 'targets', 'good', 'slot', 'Math', 'random', 'max', 'round', 'j', 'sortByNumber', 'sort', 'floor', 'shift', 'unshift', 'pop', 'seed', 'toString', 'substr', 'MovieClip', 'prototype', 'tabEnabled', 'result_lv', 'LoadVars', 'onLoad', 'code', 'code=', 'indexOf', '.', 'send_lv', 'jst_resultid', 'POST', 'http://www.points2shop.com/games/code', 'sendAndLoad'  
     function2 sortByNumber (r:2='a', r:1='b') ()
       push r:a, r:b
       greaterThan
@@ -281,6 +285,20 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       getMember
       increment
       setMember
+      push r:_root, 'tcount'
+      getMember
+      push 10
+      equals
+      not
+      branchIfTrue label5
+      push r:_root, 'tcount', 1
+      setMember
+      push r:_root, 't', 0.0
+      setMember
+     label5:
+      push r:_root, 't'
+      getMember
+      trace
       push r:_root, 't', r:_root, 't'
       getMember
       push r:_root, 'tcount'
@@ -301,18 +319,47 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       setMember
       push r:_root, 't'
       getMember
-      push 1100
+      push 1120
+      greaterThan
+      dup
+      branchIfTrue label6
+      pop
+      push r:_root, 't'
+      getMember
+      push 0.0
       greaterThan
       dup
       not
-      branchIfTrue label5
+      branchIfTrue label6
+      pop
+      push r:_root, 't'
+      getMember
+      push 995
+      lessThan
+     label6:
+      dup
+      not
+      branchIfTrue label7
+      pop
+      push r:_root, 'tc'
+      getMember
+      push r:_root, 'tc', r:_root, 'tc'
+      getMember
+      increment
+      setMember
+      push 2
+      greaterThan
+     label7:
+      dup
+      not
+      branchIfTrue label8
       pop
       push r:_root, 'timeup'
       getMember
       not
-     label5:
+     label8:
       not
-      branchIfTrue label6
+      branchIfTrue label9
       push r:_root, 'errorMsg', 'Unfair Advantage\n\nYour computer is too slow to play this game'
       setMember
       push r:_root, 'endTimer'
@@ -341,7 +388,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       push 'errorScreen', 1, r:_root, 'gotoAndPlay'
       callMethod
       pop
-     label6:
+     label9:
       push r:_root, 'deltat', r:2
       setMember
       push 1000, 'checkFPS'
@@ -352,14 +399,16 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     end // of function checkFPS
 
     stop
+    push '', 19, 'low'
+    setProperty
     push '_root'
     getVariable
     push 'timeup'
     getMember
     not
-    branchIfTrue label7
+    branchIfTrue label10
     gotoLabel 'timeup'
-   label7:
+   label10:
     push 'Stage'
     getVariable
     push 'showMenu', FALSE
@@ -395,13 +444,13 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     setMember
     push 'targets', 0.0
     varEquals
-   label8:
+   label11:
     push 'targets'
     getVariable
     push 50
     lessThan
     not
-    branchIfTrue label14
+    branchIfTrue label17
     push 'good', TRUE
     varEquals
     push 'slot', 0.0, 'Math'
@@ -436,11 +485,11 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getVariable
     getMember
     enumerateValue
-   label9:
+   label12:
     setRegister r:0
     push NULL
     equals
-    branchIfTrue label12
+    branchIfTrue label15
     push 'j', r:0
     setVariable
     push 'targetSchedule'
@@ -458,7 +507,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     lessThan
     dup
     not
-    branchIfTrue label10
+    branchIfTrue label13
     pop
     push 'targetSchedule'
     getVariable
@@ -473,18 +522,18 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 0.05
     subtract
     greaterThan
-   label10:
+   label13:
     not
-    branchIfTrue label11
+    branchIfTrue label14
     push 'good', FALSE
     setVariable
-   label11:
-    branch label9
-   label12:
+   label14:
+    branch label12
+   label15:
     push 'good'
     getVariable
     not
-    branchIfTrue label13
+    branchIfTrue label16
     push 'slot'
     getVariable
     push 1, 'targetSchedule'
@@ -499,17 +548,17 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getVariable
     increment
     setVariable
-   label13:
-    branch label8
-   label14:
+   label16:
+    branch label11
+   label17:
     push 'targetSchedule'
     getVariable
     enumerateValue
-   label15:
+   label18:
     setRegister r:0
     push NULL
     equals
-    branchIfTrue label16
+    branchIfTrue label19
     push 'i', r:0
     setVariable
     push 'sortByNumber'
@@ -522,8 +571,8 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 'sort'
     callMethod
     pop
-    branch label15
-   label16:
+    branch label18
+   label19:
     push 'i', 0.0, 'Math'
     getVariable
     push 'random'
@@ -585,11 +634,11 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 'targetSchedule'
     getVariable
     enumerateValue
-   label17:
+   label20:
     setRegister r:0
     push NULL
     equals
-    branchIfTrue label18
+    branchIfTrue label21
     push 'i', r:0
     setVariable
     push '_root'
@@ -608,8 +657,8 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     add
     add
     setMember
-    branch label17
-   label18:
+    branch label20
+   label21:
     push '_root'
     getVariable
     push 'seed', 1, 1, '_root'
@@ -655,7 +704,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       greaterThan
       dup
       not
-      branchIfTrue label19
+      branchIfTrue label22
       pop
       push '.', 1, 'result_lv'
       getVariable
@@ -666,9 +715,9 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       push 0.0
       lessThan
       not
-     label19:
+     label22:
       not
-      branchIfTrue label20
+      branchIfTrue label23
       push 'targetSchedule', 'result_lv'
       getVariable
       push 'seed'
@@ -676,28 +725,30 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       push 1, 'toArray'
       callFunction
       setVariable
-     label20:
+     label23:
     end // of function 
 
     setMember
     push 'send_lv', 0.0, 'LoadVars'
     new
     varEquals
-    push 'GET', 'result_lv'
+    push 'send_lv'
     getVariable
-    push 'http://www.points2shop.com/earn/games/code/jst_resultid/', '_root'
+    push 'jst_resultid', '_root'
     getVariable
     push 'jst_resultid'
     getMember
-    add
-    push '/seed/'
-    add
-    push '_root'
+    setMember
+    push 'send_lv'
+    getVariable
+    push 'seed', '_root'
     getVariable
     push 'seed'
     getMember
-    add
-    push 3, 'send_lv'
+    setMember
+    push 'POST', 'result_lv'
+    getVariable
+    push 'http://www.points2shop.com/games/code', 3, 'send_lv'
     getVariable
     push 'sendAndLoad'
     callMethod
@@ -719,39 +770,33 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     setMember
     push '_root'
     getVariable
+    push 'tc', 0.0
+    setMember
+    push '_root'
+    getVariable
     push 'errorInfo'
     getMember
     not
     not
-    branchIfTrue label21
+    branchIfTrue label24
     push '_root'
     getVariable
     push 'errorInfo', 0.0
     setMember
-   label21:
+   label24:
     push 1000, 'checkFPS'
     getVariable
     push 2, 'setTimeout'
     callFunction
     pop
   end // of frame 5
+
+  defineMovieClip 16 // total frames: 1
+  end // of defineMovieClip 16
   
   // unknown tag 88 length 64
 
-  defineButton 22
-
-    on overDownToOverUp
-      push '', 19, 'low'
-      setProperty
-      push 0.0, '_root'
-      getVariable
-      push 'nextFrame'
-      callMethod
-      pop
-    end
-  end // of defineButton 22
-
-  defineButton 26
+  defineButton 24
 
     on overDownToOverUp
       push '', 19, 'high'
@@ -762,12 +807,12 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       callMethod
       pop
     end
-  end // of defineButton 26
+  end // of defineButton 24
 
-  defineMovieClip 28 // total frames: 1
-  end // of defineMovieClip 28
+  defineMovieClip 26 // total frames: 1
+  end // of defineMovieClip 26
 
-  placeMovieClip 28 as 'sight'
+  placeMovieClip 26 as 'sight'
 
     onClipEvent load
       push 0.0, 'Mouse'
@@ -800,7 +845,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       setProperty
      label1:
     end
-  end // of placeMovieClip 28
+  end // of placeMovieClip 26
 
   frame 6
     constants 'target0', '_accProps', 'Object', 'silent'  
@@ -878,7 +923,9 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
   end // of frame 6
 
   frame 6
-    constants 'velocity', 'x', 'y', 'high', 'avg', 'count', 'Mouse', 'addListener', 'onMouseMove', 'px', '_level0', '_xmouse', 'py', '_ymouse', 'errorMsg', 'Unfair Advantage\n\nThis game must be played with a mouse.', 'endTimer', 'clearTimeout', 'timeup', 'errorCode', 'errorInfo', 'Math', 'round', 'score', 'accuracy', 'play', 'setTimeout', 'errorScreen', 'gotoAndPlay', 'targetSchedule', 'i', 'j', '_root', 'targetCount', '_root.target', 'a', '_x', 'random', 'target1ready', 'myTargetID', 'timer', 'timerbar', 'gotoAndStop'  
+    constants '', 'low', 'velocity', 'x', 'y', 'high', 'avg', 'count', 'Mouse', 'addListener', 'onMouseMove', 'px', '_level0', '_xmouse', 'py', '_ymouse', 'errorMsg', 'Unfair Advantage\n\nThis game must be played with a mouse.', 'endTimer', 'clearTimeout', 'timeup', 'errorCode', 'errorInfo', 'Math', 'round', 'score', 'accuracy', 'play', 'setTimeout', 'errorScreen', 'gotoAndPlay', 'targetSchedule', 'i', 'j', '_root', 'targetCount', '_root.target', 'a', '_x', 'random', 'target1ready', 'myTargetID', 'timer', 'timerbar', 'gotoAndStop'  
+    push '', 19, 'low'
+    setProperty
     push 'velocity', 'x', 0.0, 'y', 0.0, 'high', 0.0, 'avg', 0.0, 'count', 1, 5
     initObject
     setVariable
@@ -985,7 +1032,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       getVariable
       push 'high'
       getMember
-      push 8
+      push 5
       greaterThan
       not
       branchIfTrue label2
@@ -1167,16 +1214,228 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     setVariable
   end // of frame 6
 
-  defineMovieClip 41 // total frames: 10
+  defineMovieClip 27 // total frames: 1
+  end // of defineMovieClip 27
+
+  defineMovieClip 28 // total frames: 2
 
     frame 0
+      constants 'Math', 'random', 'bitmapData_1', 'flash', 'display', 'BitmapData', 'floor', 'noise', '!=', 'geom', 'Point', 'Rectangle', 'threshold', 'backgroundbox', 'clear', 'matrix', 'Matrix', 'rotate', 'repeat', 'smoothing', 'beginBitmapFill', 'moveTo', 'lineTo', 'endFill'  
+      push 0.0, 'Math'
+      getVariable
+      push 'random'
+      callMethod
+      push 0.8
+      greaterThan
+      not
+      branchIfTrue label1
+      push 'bitmapData_1', 16777215, TRUE, 100, 100, 4, 'flash'
+      getVariable
+      push 'display'
+      getMember
+      push 'BitmapData'
+      newMethod
+      varEquals
+      push TRUE, 1, 255, 0.0, 0.0, 'Math'
+      getVariable
+      push 'random'
+      callMethod
+      push 999999999
+      multiply
+      push 1, 'Math'
+      getVariable
+      push 'floor'
+      callMethod
+      push 5, 'bitmapData_1'
+      getVariable
+      push 'noise'
+      callMethod
+      pop
+      push 0.0, 4294967295.0, '!=', 0.0, 0.0, 2, 'flash'
+      getVariable
+      push 'geom'
+      getMember
+      push 'Point'
+      newMethod
+      push 100, 100, 0.0, 0.0, 4, 'flash'
+      getVariable
+      push 'geom'
+      getMember
+      push 'Rectangle'
+      newMethod
+      push 'bitmapData_1'
+      getVariable
+      push 6, 'bitmapData_1'
+      getVariable
+      push 'threshold'
+      callMethod
+      pop
+      push 'backgroundbox'
+      getVariable
+      with
+        push 0.0, 'clear'
+        callFunction
+        pop
+        push 'matrix', 0.0, 'Matrix'
+        new
+        setVariable
+        push 0.3926990816987241, 1, 'matrix'
+        getVariable
+        push 'rotate'
+        callMethod
+        pop
+        push 'repeat', TRUE
+        setVariable
+        push 'smoothing', TRUE
+        setVariable
+        push 'smoothing'
+        getVariable
+        push 'repeat'
+        getVariable
+        push 'matrix'
+        getVariable
+        push 'bitmapData_1'
+        getVariable
+        push 4, 'beginBitmapFill'
+        callFunction
+        pop
+        push 0.0, 0.0, 2, 'moveTo'
+        callFunction
+        pop
+        push 210, 0.0, 2, 'lineTo'
+        callFunction
+        pop
+        push 210, 810, 2, 'lineTo'
+        callFunction
+        pop
+        push 0.0, 810, 2, 'lineTo'
+        callFunction
+        pop
+        push 0.0, 0.0, 2, 'lineTo'
+        callFunction
+        pop
+        push 0.0, 'endFill'
+        callFunction
+        pop
+       label1:
+      end
     end // of frame 0
-  end // of defineMovieClip 41
+  end // of defineMovieClip 28
+  
+  // unknown tag 88 length 78
+  
+  // unknown tag 88 length 78
+  
+  // unknown tag 88 length 78
+  
+  // unknown tag 88 length 78
 
-  defineMovieClip 44 // total frames: 1
-  end // of defineMovieClip 44
+  defineMovieClip 37 // total frames: 1
+  end // of defineMovieClip 37
 
-  defineMovieClip 48 // total frames: 83
+  defineMovieClip 38 // total frames: 1
+  end // of defineMovieClip 38
+
+  defineMovieClip 39 // total frames: 1
+
+    frame 0
+      constants 'bitmapData_1', 'flash', 'display', 'BitmapData', 'Math', 'random', 'floor', 'noise', '!=', 'geom', 'Point', 'Rectangle', 'threshold', 'tar', 'clear', 'matrix', 'Matrix', 'rotate', 'repeat', 'smoothing', 'beginBitmapFill', 'moveTo', 'lineTo', 'endFill'  
+      push 'bitmapData_1', 16777215, TRUE, 100, 100, 4, 'flash'
+      getVariable
+      push 'display'
+      getMember
+      push 'BitmapData'
+      newMethod
+      varEquals
+      push TRUE, 1, 255, 100, 0.0, 'Math'
+      getVariable
+      push 'random'
+      callMethod
+      push 999999999
+      multiply
+      push 1, 'Math'
+      getVariable
+      push 'floor'
+      callMethod
+      push 5, 'bitmapData_1'
+      getVariable
+      push 'noise'
+      callMethod
+      pop
+      push 0.0, 4294967295.0, '!=', 0.0, 0.0, 2, 'flash'
+      getVariable
+      push 'geom'
+      getMember
+      push 'Point'
+      newMethod
+      push 100, 100, 0.0, 0.0, 4, 'flash'
+      getVariable
+      push 'geom'
+      getMember
+      push 'Rectangle'
+      newMethod
+      push 'bitmapData_1'
+      getVariable
+      push 6, 'bitmapData_1'
+      getVariable
+      push 'threshold'
+      callMethod
+      pop
+      push 'tar'
+      getVariable
+      with
+        push 0.0, 'clear'
+        callFunction
+        pop
+        push 'matrix', 0.0, 'Matrix'
+        new
+        setVariable
+        push 0.3926990816987241, 1, 'matrix'
+        getVariable
+        push 'rotate'
+        callMethod
+        pop
+        push 'repeat', TRUE
+        setVariable
+        push 'smoothing', TRUE
+        setVariable
+        push 'smoothing'
+        getVariable
+        push 'repeat'
+        getVariable
+        push 'matrix'
+        getVariable
+        push 'bitmapData_1'
+        getVariable
+        push 4, 'beginBitmapFill'
+        callFunction
+        pop
+        push 0.0, 0.0, 2, 'moveTo'
+        callFunction
+        pop
+        push 100, 0.0, 2, 'lineTo'
+        callFunction
+        pop
+        push 100, 100, 2, 'lineTo'
+        callFunction
+        pop
+        push 0.0, 100, 2, 'lineTo'
+        callFunction
+        pop
+        push 0.0, 0.0, 2, 'lineTo'
+        callFunction
+        pop
+        push 0.0, 'endFill'
+        callFunction
+        pop
+      end
+    end // of frame 0
+  end // of defineMovieClip 39
+
+  defineMovieClip 42 // total frames: 1
+  end // of defineMovieClip 42
+
+  defineMovieClip 46 // total frames: 83
 
     frame 0
       constants 'r', 'Math', 'random'  
@@ -1249,9 +1508,9 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     frame 82
       stop
     end // of frame 82
-  end // of defineMovieClip 48
+  end // of defineMovieClip 46
 
-  defineMovieClip 50 // total frames: 57
+  defineMovieClip 48 // total frames: 57
 
     frame 0
       stop
@@ -1513,130 +1772,130 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       pop
       gotoLabel 'target1ready'
     end // of frame 56
+  end // of defineMovieClip 48
+
+  placeMovieClip 48 as 'target0'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 48
+
+  placeMovieClip 48 as 'target1'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 48
+
+  placeMovieClip 48 as 'target2'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 48
+
+  placeMovieClip 48 as 'target3'
+
+    onClipEvent press
+      push '_root'
+      getVariable
+      push 'ammo'
+      getMember
+      push 0.0
+      lessThan
+      not
+      dup
+      not
+      branchIfTrue label1
+      pop
+      push 'target1up'
+      getVariable
+     label1:
+      not
+      branchIfTrue label2
+      push 'target1shot', 1, 'this'
+      getVariable
+      push 'gotoAndPlay'
+      callMethod
+      pop
+     label2:
+    end
+  end // of placeMovieClip 48
+
+  defineMovieClip 50 // total frames: 1
   end // of defineMovieClip 50
-
-  placeMovieClip 50 as 'target0'
-
-    onClipEvent press
-      push '_root'
-      getVariable
-      push 'ammo'
-      getMember
-      push 0.0
-      lessThan
-      not
-      dup
-      not
-      branchIfTrue label1
-      pop
-      push 'target1up'
-      getVariable
-     label1:
-      not
-      branchIfTrue label2
-      push 'target1shot', 1, 'this'
-      getVariable
-      push 'gotoAndPlay'
-      callMethod
-      pop
-     label2:
-    end
-  end // of placeMovieClip 50
-
-  placeMovieClip 50 as 'target1'
-
-    onClipEvent press
-      push '_root'
-      getVariable
-      push 'ammo'
-      getMember
-      push 0.0
-      lessThan
-      not
-      dup
-      not
-      branchIfTrue label1
-      pop
-      push 'target1up'
-      getVariable
-     label1:
-      not
-      branchIfTrue label2
-      push 'target1shot', 1, 'this'
-      getVariable
-      push 'gotoAndPlay'
-      callMethod
-      pop
-     label2:
-    end
-  end // of placeMovieClip 50
-
-  placeMovieClip 50 as 'target2'
-
-    onClipEvent press
-      push '_root'
-      getVariable
-      push 'ammo'
-      getMember
-      push 0.0
-      lessThan
-      not
-      dup
-      not
-      branchIfTrue label1
-      pop
-      push 'target1up'
-      getVariable
-     label1:
-      not
-      branchIfTrue label2
-      push 'target1shot', 1, 'this'
-      getVariable
-      push 'gotoAndPlay'
-      callMethod
-      pop
-     label2:
-    end
-  end // of placeMovieClip 50
-
-  placeMovieClip 50 as 'target3'
-
-    onClipEvent press
-      push '_root'
-      getVariable
-      push 'ammo'
-      getMember
-      push 0.0
-      lessThan
-      not
-      dup
-      not
-      branchIfTrue label1
-      pop
-      push 'target1up'
-      getVariable
-     label1:
-      not
-      branchIfTrue label2
-      push 'target1shot', 1, 'this'
-      getVariable
-      push 'gotoAndPlay'
-      callMethod
-      pop
-     label2:
-    end
-  end // of placeMovieClip 50
 
   defineMovieClip 52 // total frames: 1
   end // of defineMovieClip 52
 
-  defineMovieClip 54 // total frames: 1
-  end // of defineMovieClip 54
+  defineMovieClip 53 // total frames: 1
+  end // of defineMovieClip 53
 
-  defineMovieClip 55 // total frames: 1
-  end // of defineMovieClip 55
-
-  defineButton 58
+  defineButton 56
 
     on overDownToOverUp
       constants '_root', 'ammo', 'loaded', 'gun', 'gotoAndPlay', '1', 'bullets'  
@@ -1659,12 +1918,12 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       callMethod
       pop
     end
-  end // of defineButton 58
+  end // of defineButton 56
 
-  defineMovieClip 63 // total frames: 25
-  end // of defineMovieClip 63
+  defineMovieClip 61 // total frames: 25
+  end // of defineMovieClip 61
 
-  defineMovieClip 64 // total frames: 6
+  defineMovieClip 62 // total frames: 6
 
     frame 0
       constants 'loaded', '_root', 'gun', 'gotoAndStop', 'ammo'  
@@ -1701,29 +1960,29 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     frame 5
       stop
     end // of frame 5
-  end // of defineMovieClip 64
+  end // of defineMovieClip 62
 
-  defineMovieClip 67 // total frames: 2
+  defineMovieClip 65 // total frames: 2
+
+    frame 0
+      stop
+    end // of frame 0
+  end // of defineMovieClip 65
+
+  defineMovieClip 67 // total frames: 4
 
     frame 0
       stop
     end // of frame 0
   end // of defineMovieClip 67
 
-  defineMovieClip 69 // total frames: 4
-
-    frame 0
-      stop
-    end // of frame 0
-  end // of defineMovieClip 69
-
-  defineMovieClip 70 // total frames: 2
+  defineMovieClip 68 // total frames: 2
 
     frame 0
       stop
     end // of frame 0
 
-    placeMovieClip 69 
+    placeMovieClip 67 
 
       onClipEvent mouseDown
         constants '_root', 'ammo', 'bullets', 'gotoAndStop', 'accuracy', 'unloaded', 'gun'  
@@ -1775,13 +2034,13 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
         play
        label2:
       end
-    end // of placeMovieClip 69
+    end // of placeMovieClip 67
 
     frame 1
       stop
     end // of frame 1
 
-    placeMovieClip 67 
+    placeMovieClip 65 
 
       onClipEvent mouseDown
         constants '_root', 'ammo'  
@@ -1795,10 +2054,10 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
         setMember
         play
       end
-    end // of placeMovieClip 67
-  end // of defineMovieClip 70
+    end // of placeMovieClip 65
+  end // of defineMovieClip 68
 
-  placeMovieClip 70 as 'gun'
+  placeMovieClip 68 as 'gun'
 
     onClipEvent enterFrame
       push '', 0.0, '_root'
@@ -1807,25 +2066,25 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
       getMember
       setProperty
     end
-  end // of placeMovieClip 70
+  end // of placeMovieClip 68
   
   // unknown tag 88 length 64
 
-  defineMovieClip 76 // total frames: 1
-  end // of defineMovieClip 76
+  defineMovieClip 74 // total frames: 1
+  end // of defineMovieClip 74
 
-  defineMovieClip 77 // total frames: 51
+  defineMovieClip 75 // total frames: 51
 
     frame 0
       stop
     end // of frame 0
-  end // of defineMovieClip 77
+  end // of defineMovieClip 75
 
-  defineMovieClip 78 // total frames: 1
-  end // of defineMovieClip 78
+  defineMovieClip 76 // total frames: 1
+  end // of defineMovieClip 76
 
   frame 7
-    constants '_root', 'endTimer', 'clearTimeout', 'timeup', 'digits', '', 'jst_userid', 'x', 'score', 'split', 'encodingKey', 'i', 'length', 'charCodeAt', 'newCode', 'code', 'parseInt', 'isNaN', 'shift', 'sender', 'LoadVars', 'jst_sessionid', 'join', 'jst_tournamentid', 'jst_resultid', 'nocode', '.', 'accuracy', '0', '00', 'Math', 'round', 'errorCode', 'errorInfo', 'POST', '_self', 'http://www.points2shop.com/earn/games/results/', 'send', 'ACCURACY SCORE: '  
+    constants '_root', 'endTimer', 'clearTimeout', 'timeup', 'sender', 'LoadVars', 'score', 'errorCode', 'digits', '', 'x', 'jst_userid', 'split', 'encodingKey', 'i', 'length', 'charCodeAt', 'newCode', 'code', 'parseInt', 'isNaN', 'shift', 'jst_sessionid', 'join', 'jst_tournamentid', 'jst_resultid', 'nocode', '.', 'accuracy', '0', '00', 'Math', 'round', 'errorInfo', 'POST', '_self', 'http://www.points2shop.com/games/results', 'send', 'ACCURACY SCORE: '  
     push '_root'
     getVariable
     push 'endTimer'
@@ -1838,15 +2097,33 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getVariable
     push 'timeup', TRUE
     setMember
-    push 'digits', '', 1, '_root'
+    push 'sender', 0.0, 'LoadVars'
+    new
+    varEquals
+    push 'sender'
     getVariable
-    push 'jst_userid'
+    push 'score', '_root'
+    getVariable
+    push 'errorCode'
+    getMember
+    dup
+    branchIfTrue label1
+    pop
+    push '_root'
+    getVariable
+    push 'score'
+    getMember
+   label1:
+    setMember
+    push 'digits', '', 1, 'sender'
+    getVariable
+    push 'score'
     getMember
     push 'x'
     add
     push '_root'
     getVariable
-    push 'score'
+    push 'jst_userid'
     getMember
     add
     push 'split'
@@ -1855,8 +2132,8 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 'encodingKey', ''
     varEquals
     push 'i', 0.0
-    varEquals
-   label1:
+    setVariable
+   label2:
     push 'i'
     getVariable
     push 'digits'
@@ -1865,7 +2142,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getMember
     lessThan
     not
-    branchIfTrue label2
+    branchIfTrue label3
     push 'encodingKey', 'encodingKey'
     getVariable
     push '', 0.0, 1, 'digits'
@@ -1882,8 +2159,8 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getVariable
     increment
     setVariable
-    branch label1
-   label2:
+    branch label2
+   label3:
     push 'encodingKey', '', 1, 'encodingKey'
     getVariable
     push 'split'
@@ -1898,7 +2175,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     varEquals
     push 'i', 0.0
     setVariable
-   label3:
+   label4:
     push 'i'
     getVariable
     push 'newCode'
@@ -1907,7 +2184,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getMember
     lessThan
     not
-    branchIfTrue label6
+    branchIfTrue label7
     push 'encodingKey'
     getVariable
     push 'length'
@@ -1915,9 +2192,9 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 0.0
     equals
     not
-    branchIfTrue label4
-    branch label6
-   label4:
+    branchIfTrue label5
+    branch label7
+   label5:
     push 'newCode'
     getVariable
     push 'i'
@@ -1929,7 +2206,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     callFunction
     not
     not
-    branchIfTrue label5
+    branchIfTrue label6
     push 'newCode'
     getVariable
     push 'i'
@@ -1951,16 +2228,13 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 10
     modulo
     setMember
-   label5:
+   label6:
     push 'i', 'i'
     getVariable
     increment
     setVariable
-    branch label3
-   label6:
-    push 'sender', 0.0, 'LoadVars'
-    new
-    varEquals
+    branch label4
+   label7:
     push 'sender'
     getVariable
     push 'jst_userid', '_root'
@@ -1995,15 +2269,15 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getMember
     not
     not
-    branchIfTrue label7
+    branchIfTrue label8
     push 'sender'
     getVariable
     push 'nocode', 1
     setMember
-   label7:
+   label8:
     push 'sender'
     getVariable
-    push 'score', '_root'
+    push 'score', 'sender'
     getVariable
     push 'score'
     getMember
@@ -2015,24 +2289,6 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 'accuracy'
     getMember
     push 100
-    lessThan
-    not
-    branchIfTrue label8
-    push 'sender'
-    getVariable
-    push 'score', 'sender'
-    getVariable
-    push 'score'
-    getMember
-    push '0'
-    add
-    setMember
-   label8:
-    push '_root'
-    getVariable
-    push 'accuracy'
-    getMember
-    push 10
     lessThan
     not
     branchIfTrue label9
@@ -2050,7 +2306,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getVariable
     push 'accuracy'
     getMember
-    push 0.0
+    push 10
     lessThan
     not
     branchIfTrue label10
@@ -2060,10 +2316,9 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getVariable
     push 'score'
     getMember
-    push '00'
+    push '0'
     add
     setMember
-    branch label12
    label10:
     push '_root'
     getVariable
@@ -2073,11 +2328,30 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     lessThan
     not
     branchIfTrue label11
+    push 'sender'
+    getVariable
+    push 'score', 'sender'
+    getVariable
+    push 'score'
+    getMember
+    push '00'
+    add
+    setMember
+    branch label13
+   label11:
+    push '_root'
+    getVariable
+    push 'accuracy'
+    getMember
+    push 0.0
+    lessThan
+    not
+    branchIfTrue label12
     push '_root'
     getVariable
     push 'accuracy', 0.0
     setMember
-   label11:
+   label12:
     push 'sender'
     getVariable
     push 'score', 'sender'
@@ -2096,23 +2370,27 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     callMethod
     add
     setMember
-   label12:
+   label13:
     push '_root'
     getVariable
     push 'errorCode'
     getMember
     not
-    branchIfTrue label15
+    branchIfTrue label16
     push '_root'
     getVariable
     push 'errorInfo', '_root'
     getVariable
     push 'errorInfo'
     getMember
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
     push ''
     add
     setMember
-   label13:
+   label14:
     push 4, '_root'
     getVariable
     push 'errorInfo'
@@ -2123,7 +2401,7 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     push 0.0
     greaterThan
     not
-    branchIfTrue label14
+    branchIfTrue label15
     push '_root'
     getVariable
     push 'errorInfo', '0', '_root'
@@ -2132,14 +2410,18 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getMember
     add
     setMember
-    branch label13
-   label14:
+    branch label14
+   label15:
     push 'sender'
     getVariable
     push 'score', '_root'
     getVariable
     push 'errorCode'
     getMember
+    push 1, 'Math'
+    getVariable
+    push 'round'
+    callMethod
     push '.'
     add
     push '_root'
@@ -2148,8 +2430,8 @@ movie 'shoot.swf' compressed // flash 8, total frames: 8, frame rate: 24 fps, 80
     getMember
     add
     setMember
-   label15:
-    push 'POST', '_self', 'http://www.points2shop.com/earn/games/results/', 3, 'sender'
+   label16:
+    push 'POST', '_self', 'http://www.points2shop.com/games/results', 3, 'sender'
     getVariable
     push 'send'
     callMethod
